@@ -1,0 +1,26 @@
+package com.hemanth;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class peak {
+    public static void main(String[] args) {
+        int[] arr = {2,4,6,8,22,24,21,9,5,3,1};
+        int ans = peak_element(arr);
+        System.out.println(ans);
+
+    }
+    static int peak_element(int[] arr){
+        int start =0;
+        int end = arr.length-1;
+        while (start<end){
+            int mid =(start+end)/2;
+            if (arr[mid]>arr[mid+1]){
+                end = mid;
+            }else {
+                start = mid +1;
+            }
+        }
+        return start; // start == end == mid
+    }
+}
