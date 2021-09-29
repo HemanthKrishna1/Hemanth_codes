@@ -1,0 +1,25 @@
+package com.hemanth;
+
+public class palindrome {
+    public static void main(String[] args) {
+        int x = 121;
+        boolean ans = palindrome(x);
+        System.out.println(ans);
+
+    }
+    static boolean palindrome(int x){
+        if(x<0){
+            return false;
+        }
+        int p = x;
+        int r=0;
+        while(x>0){
+            r=r*10 + x%10;
+            x/=10;
+        }
+        if (r==p){
+            return true;
+        }
+        return false;
+    }
+}
