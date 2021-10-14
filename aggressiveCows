@@ -1,0 +1,47 @@
+package com.hemanth;
+
+import java.util.Arrays;
+
+public class aggressiveCows {
+    public static void main(String[] args) {
+        int[] arr = {1,2,8,4,9};
+        int cows = 3;
+        int ans = aggressiveCows(arr , cows);
+        System.out.println(ans);
+
+
+    }
+    static int aggressiveCows(int[] arr, int cows){
+        Arrays.sort(arr);
+        int start =0 ;
+        int ans = -1;
+        int end = arr[arr.length-1];
+        while(start<=end){
+            int mid = (start+end)/2;
+            if (ans_valid(arr,mid,cows)){
+                ans = mid;
+                start = mid+1;
+            }else {
+                end = mid-1;
+            }
+        }
+        return ans;
+
+    }
+
+    static boolean ans_valid(int[] arr, int dis, int cows){
+        int count = 1;
+        int pos = arr[0];
+        for (int i=1; i < arr.length; i++){
+            if(pos+dis <= arr[i]) {
+                count++;
+                pos = arr[i];
+            }
+            if(count == cows){
+                return true;
+            }
+        }
+        return false;
+    }
+
+}
