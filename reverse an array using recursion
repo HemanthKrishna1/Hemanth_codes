@@ -1,0 +1,9 @@
+static void reverse_array_using_recursion(int i, int[] arr){
+        if(i > (arr.length/2)-1){
+            return;
+        }
+        arr[i] = arr[i] ^ arr[arr.length-i-1];
+        arr[arr.length-i-1] = arr[i] ^ arr[arr.length-i-1];
+        arr[i] = arr[i] ^ arr[arr.length-i-1];
+        reverse_array_using_recursion(i+1,arr);
+    }
