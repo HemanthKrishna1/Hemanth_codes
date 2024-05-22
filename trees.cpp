@@ -194,6 +194,31 @@ void printBT(const string& prefix, const Node* node, bool isLeft){
     }
 }
 
+int diameterTreeHelper(Node* root, int &diameter){
+    if(!root) return 0;
+    int leftHeight = diameterTreeHelper(root->left, diameter);
+    int rightHeight = diameterTreeHelper(root->right, diameter);
+
+    diameter = max(diameter, leftHeight + rightHeight);
+
+    return 1 + max(leftHeight , rightHeight);
+}
+
+int diameterTree(Node* root){
+    int diameter=0;
+    diameterTreeHelper(root, diameter);
+    return diameter;
+}
+
+bool symmetricTreeHelper(Node* root1, Node* root2){
+    if(!root1->data || !root2->data) return root1 == root2;
+    return root1->data==root2->data && symmetricTreeHelper(root1->left, root2->right) && symmetricTreeHelper(root1->right,root2->left);
+}
+bool symmetricTree(Node* root){
+    if(!root) return true;
+    return symmetricTreeHelper(root->left, root->right);
+}
+
 int main(){
     int x;
     cin>>x;
